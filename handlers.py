@@ -1,4 +1,4 @@
-from telegram import Update, ParseMode, KeyboardButton, ReplyKeyboardMarkup, WebAppInfo
+from telegram import Update, ParseMode, KeyboardButton, ReplyKeyboardMarkup, WebAppInfo, ReplyKeyboardRemove, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CallbackContext
 
 
@@ -38,11 +38,43 @@ def start(update: Update, context: CallbackContext):
                     KeyboardButton('My gov',
                                    web_app=WebAppInfo(url="https://my.gov.uz/")
                         )
+                ],
+                [
+                    KeyboardButton('Close'), KeyboardButton('Biz haqimizda')
                 ]
+                
             ],
             resize_keyboard=True
         )
     )
+
+def remove_keyboard(update : Update, context : CallbackContext):
+    update.message.reply_text(
+        'Close keyboard',
+        reply_markup=ReplyKeyboardRemove()
+
+    )  
+def send_inline_keyboard(update: Update, context: CallbackContext):
+    update.message.reply_text(
+        'inline keyboard',
+        reply_markup=InlineKeyboardMarkup(
+            inline_keyboard=[
+                [
+                    InlineKeyboardButton(text='Go google ', url='https://google.com'),
+                    InlineKeyboardButton(text='Order', callback_data='id'),
+                ]
+            ]
+        )
+
+    )
+def about_us(update: Update, context: CallbackContext):
+    text = (
+        " *Biz haqimizda:*\n\n"
+        "Bu bot — foydalanuvchilarga xizmat korsatish va qulay interfeys taqdim etish uchun yaratilgan.\n\n"
+        " Biz bilan boglanish: @settarovartur"
+    )
+    update.message.reply_text(text, parse_mode='Markdown')
+
 
 
 def handler_photo(update : Update, context : CallbackContext):
