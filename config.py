@@ -1,5 +1,6 @@
 import os
-from dotenv import loat_dotenv
+from dotenv import load_dotenv  
 
-loat_dotenv()
+
+load_dotenv()
 TOKEN = os.getenv("TOKEN")
