@@ -41,6 +41,9 @@ def start(update: Update, context: CallbackContext):
                 ],
                 [
                     KeyboardButton('Close'), KeyboardButton('Biz haqimizda')
+                ],
+                [
+                    KeyboardButton('Orqaga')
                 ]
                 
             ],
@@ -89,3 +92,5 @@ def handler_text(update : Update , context : CallbackContext):
     update.message.reply_markdown_v2(
         text= f"linkni ustiga bosing [inline URL](http://www.example.com/)"
     )
+def orqaga(update: Update, context: CallbackContext):
+    start(update, context)  

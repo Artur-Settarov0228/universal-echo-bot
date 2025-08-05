@@ -1,6 +1,6 @@
 from config import TOKEN
 from telegram.ext import Updater, MessageHandler, Filters, CommandHandler
-from handlers import handler_photo, handler_main_menu, start, handler_text, remove_keyboard, send_inline_keyboard, about_us
+from handlers import handler_photo, handler_main_menu, start, handler_text, remove_keyboard, send_inline_keyboard, about_us, orqaga
 
 
 def main() -> None:
@@ -15,6 +15,10 @@ def main() -> None:
     dispatcher.add_handler(MessageHandler(Filters.text('Close'), remove_keyboard))
     dispatcher.add_handler(MessageHandler(Filters.text ('Buyurtma berish'), send_inline_keyboard))
     dispatcher.add_handler(MessageHandler(Filters.text ('Biz haqimizda'), about_us))
+    dispatcher.add_handler(MessageHandler(Filters.text(' Orqaga'), orqaga))
+
+
+
     updater.start_polling()
     updater.idle()
 
