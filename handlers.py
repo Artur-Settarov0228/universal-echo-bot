@@ -68,13 +68,13 @@ def send_inline_keyboard(update: Update, context: CallbackContext):
 
     )
 def about_us(update: Update, context: CallbackContext):
+    update.message.reply_text(text, parse_mode='Markdown')
     text = (
         " *Biz haqimizda:*\n\n"
         "Bu bot — foydalanuvchilarga xizmat korsatish va qulay interfeys taqdim etish uchun yaratilgan.\n\n"
         " Biz bilan boglanish: @settarovartur"
-    )
-    update.message.reply_text(text, parse_mode='Markdown')
-
+     )
+    
 
 
 def handler_photo(update : Update, context : CallbackContext):
